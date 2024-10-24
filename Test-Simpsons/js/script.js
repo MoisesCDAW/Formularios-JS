@@ -44,7 +44,7 @@ const preguntas = [
         res2: "Ned",
         res3: "Moe"
     },
-    {pregunta: "¿Quién creo los simpson?", 
+    {pregunta: "¿Quién creó Los Simpson?", 
         res1: "J. K. Rowling",
         res2: "George Lucas",
         resc: "Matt Groening"
@@ -53,17 +53,41 @@ const preguntas = [
 
 
 function pintaPreguntas() {
+    let str = "";
+
     for (let i = 0; i < preguntas.length; i++) {
         let correcta = preguntas[i].resc;
-        let respuestas = cambiaOrdenRespuestas(preguntas[i]);
+        let respuestas = cambiaOrdenRespuestas(preguntas[i]);    
+
+        str = `           
+            <div class="cont-pregunta">
+                <p id="pregunta-x">Pregunta sobre la serie de televisión</p>
+                <input type="radio" name="opcion-x" id="radio-x.0"><span id="res-x.0">Respuesta uno</span>
+                <input type="radio" name="opcion-x" id="radio-x.1"><span id="res-x.1">Respuesta dos</span>
+                <input type="radio" name="opcion-x" id="radio-x.2"><span id="res-x.2">Respuesta tres</span>
+            </div>`;
         
-        document.getElementById("pregunta").innerHTML = preguntas[i].pregunta;
+        document.getElementsByName("opcion-x").name = "opcion-"+i;
+        document.getElementById("pregunta-x").id = "pregunta-"+i;
+        document.getElementById("pregunta-"+i).innerHTML = preguntas[i].pregunta;
+
         for (let j = 0; j < 3; j++) {
-            document.getElementById("res-"+j).innerHTML = respuestas[j];
+            document.getElementById("res-x."+j).id = "res-"+i+"."+j;
+            document.getElementById("radio-x."+j).id = "radio-"+i+"."+j;
+            document.getElementById("res-"+i+"."+j).innerHTML = respuestas[j];
         }
 
+        if (i< preguntas.length-1) {
+            document.getElementById("preguntas").innerHTML += str;
+        }
+        
     }
+
+    str = `<button id="enviar">Enviar</button>`;
+    document.getElementById("preguntas").innerHTML += str;
+
 }
+
 
 function cambiaOrdenRespuestas(objeto) {
     let nuevoOrden = [];
