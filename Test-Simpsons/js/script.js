@@ -52,13 +52,41 @@ const preguntas = [
 ];
 
 
-function validarRespuestas() {
-    document.getElementById("preguntas").addEventListener("submit", function(evento) {
+function validarRespuestas(boton) {
+    let correctas = 0;
+
+    document.querySelector("#preguntas").addEventListener("submit", function(evento) {
         evento.preventDefault();
     });
 
-    let x = document.querySelectorAll("input[name=opcion]");
-    console.log(x);
+
+    const marcados = Array.from (document.querySelectorAll("input[type=radio]:checked"));
+    
+    if (marcados.length==0) {
+
+
+        // NOTA: Agregar clase que pinte la pregunta que falta
+
+
+
+    }else {
+        // document.querySelector("#"+boton.id).hidden = true;        // OJO: Descomentar
+
+        for (let i = 0; i < 2; i++) {                   // OJO: Cambiar al length de "preguntas"
+            let posicion = document.querySelector("#resultado-"+i);
+            posicion.className = "";
+
+            if (marcados[i].value==preguntas[i].resc) {
+                correctas++;
+                posicion.classList.add("correcta");
+            }else{
+                posicion.classList.add("incorrecta");
+            }
+        }
+    }
+    
+
+    document.querySelector("#num-correctas").innerHTML = `Resultado: ${correctas} / 10`;
 }
 
 
@@ -84,38 +112,39 @@ function cambiaOrdenRespuestas(objeto) {
 function pintaPreguntas() {
     let str = "";
 
-    for (let i = 0; i < preguntas.length; i++) {
+    for (let i = 0; i < 2; i++) {                       // OJO: Cambiar al length de "preguntas"
         let respuestas = cambiaOrdenRespuestas(preguntas[i]);    
 
         str = `           
             <div class="cont-pregunta">
                 <p id="pregunta-x">Pregunta sobre la serie de televisión</p>
-                <input type="radio" name="opcion-x" id="radio-x.0"><span id="res-x.0">Respuesta uno</span>
-                <input type="radio" name="opcion-x" id="radio-x.1"><span id="res-x.1">Respuesta dos</span>
-                <input type="radio" name="opcion-x" id="radio-x.2"><span id="res-x.2">Respuesta tres</span>
+                <input type="radio" name="opcion-x" id="radio-x-0"><span id="res-x-0">Respuesta uno</span>
+                <input type="radio" name="opcion-x" id="radio-x-1"><span id="res-x-1">Respuesta dos</span>
+                <input type="radio" name="opcion-x" id="radio-x-2"><span id="res-x-2">Respuesta tres</span>
+                <div id="resultado-x"></div>
             </div>`;
         
         
-        document.getElementById("pregunta-x").id = "pregunta-"+i;
-        document.getElementById("pregunta-"+i).innerHTML = preguntas[i].pregunta;
+        document.querySelector("#pregunta-x").id = "pregunta-"+i;
+        document.querySelector("#resultado-x").id = "resultado-"+i;
+        document.querySelector("#pregunta-"+i).innerHTML = preguntas[i].pregunta;
 
         for (let j = 0; j < 3; j++) {
             document.querySelector("[name='opcion-x']").name = "opcion-"+i;
-            document.getElementById("res-x."+j).id = "res-"+i+"."+j;
-            document.getElementById("radio-x."+j).id = "radio-"+i+"."+j;
-            document.getElementById("res-"+i+"."+j).innerHTML = respuestas[j];
+            document.querySelector("#res-x-"+j).id = "res-"+i+"-"+j;
+            document.querySelector("#radio-x-"+j).id = "radio-"+i+"-"+j;
+            document.querySelector("#radio-"+i+"-"+j).value = respuestas[j];
+            document.querySelector("#res-"+i+"-"+j).innerHTML = respuestas[j];
         }
 
-        if (i< preguntas.length-1) {
-            document.getElementById("preguntas").innerHTML += str;
+        if (i < 1) {                               // OJO: Cambiar al length de "preguntas"
+            document.querySelector("#preguntas").innerHTML += str;
         }
         
     }
 
-    str = `<button id="enviar" onclick=validarRespuestas()>Enviar</button>`;
-    document.getElementById("preguntas").innerHTML += str;
-
-    validarRespuestas();
+    str = `<button id="enviar" onclick=validarRespuestas(this)>Enviar</button>`;
+    document.querySelector("#preguntas").innerHTML += str;
 }
 
 pintaPreguntas();

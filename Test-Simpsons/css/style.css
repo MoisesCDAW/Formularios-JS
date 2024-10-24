@@ -1,0 +1,13 @@
+.correcta {
+    width: 25px;
+    height: 25px;
+    background: url("../img/correcta.png");
+    background-size: 100%;
+}
+
+.incorrecta {
+    width: 25px;
+    height: 25px;
+    background: url("../img/incorrecta.png");
+    background-size: 100%;
+}

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Inicio</title>
 </head>
 <body>
@@ -10,12 +11,17 @@
         <form id="preguntas">
             <div class="cont-pregunta">
                 <p id="pregunta-x">Pregunta sobre la serie de televisión</p>
-                <input type="radio" name="opcion-x" id="radio-x.0"><span id="res-x.0">Respuesta uno</span>
-                <input type="radio" name="opcion-x" id="radio-x.1"><span id="res-x.1">Respuesta dos</span>
-                <input type="radio" name="opcion-x" id="radio-x.2"><span id="res-x.2">Respuesta tres</span>
+                <input type="radio" name="opcion-x" id="radio-x-0"><span id="res-x-0">Respuesta uno</span>
+                <input type="radio" name="opcion-x" id="radio-x-1"><span id="res-x-1">Respuesta dos</span>
+                <input type="radio" name="opcion-x" id="radio-x-2"><span id="res-x-2">Respuesta tres</span>
+                <div id="resultado-x"></div>
             </div>
             <!-- <button id="enviar">Enviar</button> -->
         </form>
+
+        <div class="contenedor-detalles" id="detalles">
+            <p id="num-correctas"></p>
+        </div>
     </section>
     
     <script src="js/script.js" ></script>
