@@ -91,6 +91,8 @@ function validarRespuestas() {
         preIncorrectas.map((x)=>x.classList.add("incorrecta"));
         document.querySelector("#enviar").hidden = true;
         document.querySelector("#num-correctas").innerHTML = `Resultado: ${correctas} / ${cantidadPreguntas}`;
+    }else{
+        alert("No has respondido todas las preguntas");
     }
     
 }
