@@ -11,3 +11,12 @@
     background: url("../img/incorrecta.png");
     background-size: 100%;
 }
+
+.marcada {
+
+}
+
+.no-marcada {
+    border: 2px solid red;
+    border-radius: 10px;
+}

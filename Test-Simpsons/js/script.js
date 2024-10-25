@@ -52,8 +52,9 @@ const preguntas = [
 ];
 
 
-function validarRespuestas(boton) {
+function validarRespuestas() {
     let correctas = 0;
+    let cantidadPreguntas = 10;
 
     document.querySelector("#preguntas").addEventListener("submit", function(evento) {
         evento.preventDefault();
@@ -61,33 +62,38 @@ function validarRespuestas(boton) {
 
 
     const marcados = Array.from (document.querySelectorAll("input[type=radio]:checked"));
+
+    // document.querySelector("#"+boton.id).hidden = true;        // OJO: Descomentar
+
+    for (let i = 0; i < 2; i++) {                   // OJO: Cambiar al length de "preguntas"
+        let posicion = document.querySelector("#resultado-"+i);
+        posicion.className = "";
+
+        console.log(marcados);
+        console.log(marcados.indexOf(document.querySelector("[name=opcion-"+i+"]").name));
+        // if (marcados[i].name=="opcion-"+i) {
+
+        //     if (marcados[i].value==preguntas[i].resc) {
+        //         correctas++;
+        //         posicion.classList.add("correcta");
+        //     }else{
+        //         posicion.classList.add("incorrecta");
+        //     }
     
-    if (marcados.length==0) {
+        //     document.querySelector("#cont-pregunta-"+i).classList.add("marcada");
+        // }else{
+        //     document.querySelector("#cont-pregunta-"+i).classList.add("no-marcada");
+        // }
+    }
 
-
-        // NOTA: Agregar clase que pinte la pregunta que falta
-
-
-
-    }else {
-        // document.querySelector("#"+boton.id).hidden = true;        // OJO: Descomentar
-
-        for (let i = 0; i < 2; i++) {                   // OJO: Cambiar al length de "preguntas"
-            let posicion = document.querySelector("#resultado-"+i);
-            posicion.className = "";
-
-            if (marcados[i].value==preguntas[i].resc) {
-                correctas++;
-                posicion.classList.add("correcta");
-            }else{
-                posicion.classList.add("incorrecta");
-            }
-        }
+    if (marcados.length==cantidadPreguntas) {
+        document.querySelector("#num-correctas").innerHTML = `Resultado: ${correctas} / ${cantidadPreguntas}`;
     }
     
-
-    document.querySelector("#num-correctas").innerHTML = `Resultado: ${correctas} / 10`;
 }
+    
+
+
 
 
 function cambiaOrdenRespuestas(objeto) {
@@ -116,7 +122,7 @@ function pintaPreguntas() {
         let respuestas = cambiaOrdenRespuestas(preguntas[i]);    
 
         str = `           
-            <div class="cont-pregunta">
+            <div class="cont-pregunta" id="cont-pregunta-x">
                 <p id="pregunta-x">Pregunta sobre la serie de televisión</p>
                 <input type="radio" name="opcion-x" id="radio-x-0"><span id="res-x-0">Respuesta uno</span>
                 <input type="radio" name="opcion-x" id="radio-x-1"><span id="res-x-1">Respuesta dos</span>
@@ -124,7 +130,7 @@ function pintaPreguntas() {
                 <div id="resultado-x"></div>
             </div>`;
         
-        
+        document.querySelector("#cont-pregunta-x").id = "cont-pregunta-"+i;
         document.querySelector("#pregunta-x").id = "pregunta-"+i;
         document.querySelector("#resultado-x").id = "resultado-"+i;
         document.querySelector("#pregunta-"+i).innerHTML = preguntas[i].pregunta;
@@ -143,7 +149,7 @@ function pintaPreguntas() {
         
     }
 
-    str = `<button id="enviar" onclick=validarRespuestas(this)>Enviar</button>`;
+    str = `<button id="enviar" onclick=validarRespuestas()>Enviar</button>`;
     document.querySelector("#preguntas").innerHTML += str;
 }
 
