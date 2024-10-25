@@ -54,47 +54,47 @@ const preguntas = [
 
 function validarRespuestas() {
     let correctas = 0;
+    let valido = true;
     let cantidadPreguntas = 10;
+    let preCorrectas = [];
+    let preIncorrectas = [];
 
     document.querySelector("#preguntas").addEventListener("submit", function(evento) {
         evento.preventDefault();
     });
 
+    for (let i = 0; i < preguntas.length; i++) {
+        const posicionRes = document.querySelector("#resultado-"+i);
+        const posicionPre = document.querySelector("#cont-pregunta-"+i);
+        const marcado = posicionPre.querySelector("input[type=radio]:checked");
+        
+        if (marcado!=null) {
+            if (marcado.value==preguntas[i].resc) {
+                correctas++;
+                preCorrectas.push(posicionRes);
+            }else{
+                preIncorrectas.push(posicionRes);
+            }
 
-    const marcados = Array.from (document.querySelectorAll("input[type=radio]:checked"));
+            Array.from(posicionPre.querySelectorAll("input[type=radio]")).map((x)=>x.disabled = true);
 
-    // document.querySelector("#"+boton.id).hidden = true;        // OJO: Descomentar
-
-    for (let i = 0; i < 2; i++) {                   // OJO: Cambiar al length de "preguntas"
-        let posicion = document.querySelector("#resultado-"+i);
-        posicion.className = "";
-
-        console.log(marcados);
-        console.log(marcados.indexOf(document.querySelector("[name=opcion-"+i+"]").name));
-        // if (marcados[i].name=="opcion-"+i) {
-
-        //     if (marcados[i].value==preguntas[i].resc) {
-        //         correctas++;
-        //         posicion.classList.add("correcta");
-        //     }else{
-        //         posicion.classList.add("incorrecta");
-        //     }
-    
-        //     document.querySelector("#cont-pregunta-"+i).classList.add("marcada");
-        // }else{
-        //     document.querySelector("#cont-pregunta-"+i).classList.add("no-marcada");
-        // }
+            posicionPre.classList.remove("no-marcada");
+            marcado.classList.add("marcada");
+        }else {
+            valido = false;
+            posicionPre.classList.add("no-marcada");
+        }
     }
 
-    if (marcados.length==cantidadPreguntas) {
+    if (valido) {
+        preCorrectas.map((x)=>x.classList.add("correcta"));
+        preIncorrectas.map((x)=>x.classList.add("incorrecta"));
+        document.querySelector("#enviar").hidden = true;
         document.querySelector("#num-correctas").innerHTML = `Resultado: ${correctas} / ${cantidadPreguntas}`;
     }
     
 }
     
-
-
-
 
 function cambiaOrdenRespuestas(objeto) {
     let nuevoOrden = [];
@@ -118,7 +118,7 @@ function cambiaOrdenRespuestas(objeto) {
 function pintaPreguntas() {
     let str = "";
 
-    for (let i = 0; i < 2; i++) {                       // OJO: Cambiar al length de "preguntas"
+    for (let i = 0; i < preguntas.length; i++) {
         let respuestas = cambiaOrdenRespuestas(preguntas[i]);    
 
         str = `           
@@ -143,7 +143,7 @@ function pintaPreguntas() {
             document.querySelector("#res-"+i+"-"+j).innerHTML = respuestas[j];
         }
 
-        if (i < 1) {                               // OJO: Cambiar al length de "preguntas"
+        if (i < preguntas.length-1) {                              
             document.querySelector("#preguntas").innerHTML += str;
         }
         
