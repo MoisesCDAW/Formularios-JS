@@ -76,7 +76,7 @@ function validarRespuestas() {
                 preIncorrectas.push(posicionRes);
             }
 
-            Array.from(posicionPre.querySelectorAll("input[type=radio]")).map((x)=>x.disabled = true);
+            posicionPre.querySelectorAll("input[type=radio]").forEach((x)=>x.disabled = true);
 
             posicionPre.classList.remove("no-marcada");
             marcado.classList.add("marcada");
@@ -151,8 +151,15 @@ function pintaPreguntas() {
         
     }
 
-    str = `<button id="enviar" onclick=validarRespuestas()>Enviar</button>`;
+    str = `<button id="enviar">Enviar</button>`;
     document.querySelector("#preguntas").innerHTML += str;
+
+    document.querySelector("#enviar").addEventListener("click", ()=>{
+        validarRespuestas();
+    });
 }
 
+
 pintaPreguntas();
+
+
