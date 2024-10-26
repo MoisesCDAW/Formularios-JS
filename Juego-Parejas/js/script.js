@@ -27,15 +27,25 @@ function manejarEvento(evento) {
     if (reveladas.length==2) {
         if (reveladas[0].value==reveladas[1].value) {
             setTimeout(()=>{
-                reveladas.forEach((x)=>{x.className =""; x.classList.add("emparejada")});
+                reveladas.forEach((x)=>{
+                    x.className =""; 
+                    x.classList.add("emparejada");
+                    x.removeAttribute("style");
+                });
             }, 400);
             
             document.querySelector("#resultados").textContent = Number(document.querySelector("#resultados").textContent)+1;
         }else{
             setTimeout(()=>{
-                reveladas.forEach((x)=>{x.className =""; x.classList.add("oculta")});
+                reveladas.forEach((x)=>{
+                    x.className =""; 
+                    x.classList.add("oculta");
+                    x.removeAttribute("style");
+                });
             }, 400);
         }
+
+        
     }
 
 }
