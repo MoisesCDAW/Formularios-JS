@@ -21,15 +21,16 @@ td {
 }
 
 .oculta {
-    background-color:aqua;
+    background:aqua;
     cursor: pointer;
 }
 
 .revelada {
-    background: url("../img/abraham.png") no-repeat;
+    background-image: url('../img/lisa.png');
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
+    background-color: white;
     cursor: pointer;
 }
 

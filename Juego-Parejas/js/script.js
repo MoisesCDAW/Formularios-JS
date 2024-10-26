@@ -1,45 +1,61 @@
 const fotos = [
-    "../img/abraham",
-    "../img/bard",
-    "../img/homero",
-    "../img/lisa",
-    "../img/milhouse",
-    "../img/ned"
+    "img/abraham.png",
+    "img/bard.png",
+    "img/homero.png",
+    "img/lisa.png",
+    "img/milhouse.png",
+    "img/ned.png"
 ];
 
 
-function asignaFotos() {
-    let numeros = [];
+function inicio() {
+    let numsA = [];
+    let numsB = [];
     let longitud = fotos.length;
 
     for (let i = 0; i < longitud; i++) {
         let num = Math.floor(Math.random()*longitud);
-        if (numeros.indexOf(num)==-1) {
-            numeros.push(num);
+        if (numsA.indexOf(num)==-1) {
+            numsA.push(num);
         }else{
             i--;
         }
     }
-    
+
+    for (let i = 0; i < longitud; i++) {
+        let num = Math.floor(Math.random()*longitud);
+        if (numsB.indexOf(num)==-1) {
+            numsB.push(num);
+        }else{
+            i--;
+        }
+    }
 
     document.querySelectorAll("tr").forEach((x)=>{
         x.querySelectorAll("td").forEach((y)=>{
-            y.classList.toggle("revelada");
-            console.log(numeros);
-            y.style.background=fotos[numeros[0]];
-            numeros.shift();
+            if (numsA.length!=0) {
+                y.value = numsA[0];
+                numsA.shift();
+            }else{
+                y.value = numsB[0];
+                numsB.shift();
+            }
         });
     });
 
-}
-
-function inicio() {
     document.querySelector("table").addEventListener("click", (evento)=>{
         if (evento.target && evento.target.tagName === 'TD') {
-            evento.target.classList.toggle("revelada");
+
+            evento.target.classList.toggle("oculta");
+            
+            if (evento.target.classList.toggle("revelada")==true) {
+                evento.target.style.backgroundImage = "url('"+fotos[evento.target.value]+"')";
+            }else{
+                evento.target.removeAttribute("style");
+            } 
         }
     });
-    asignaFotos();
+
 }
 
 inicio();
