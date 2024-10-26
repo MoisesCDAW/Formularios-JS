@@ -13,7 +13,6 @@ table {
     width: 60%;
     height: 95vh;
     border-collapse: collapse;
-    border: 2px solid red;
 }
 
 td {
@@ -35,5 +34,5 @@ td {
 }
 
 .emparejada {
-    background-color: white;
+    background: rgb(243, 88, 88);
 }

@@ -8,6 +8,39 @@ const fotos = [
 ];
 
 
+function manejarEvento(evento) {
+    let reveladas;
+
+    if (evento.target && evento.target.tagName === 'TD') {
+
+        evento.target.classList.toggle("oculta");
+        
+        if (evento.target.classList.toggle("revelada")==true) {
+            evento.target.style.backgroundImage = "url('"+fotos[evento.target.value]+"')";
+        }else{
+            evento.target.removeAttribute("style");
+        } 
+    }
+
+    reveladas = document.querySelectorAll(".revelada");
+
+    if (reveladas.length==2) {
+        if (reveladas[0].value==reveladas[1].value) {
+            setTimeout(()=>{
+                reveladas.forEach((x)=>{x.className =""; x.classList.add("emparejada")});
+            }, 400);
+            
+            document.querySelector("#resultados").textContent = Number(document.querySelector("#resultados").textContent)+1;
+        }else{
+            setTimeout(()=>{
+                reveladas.forEach((x)=>{x.className =""; x.classList.add("oculta")});
+            }, 400);
+        }
+    }
+
+}
+
+
 function inicio() {
     let numsA = [];
     let numsB = [];
@@ -43,19 +76,7 @@ function inicio() {
         });
     });
 
-    document.querySelector("table").addEventListener("click", (evento)=>{
-        if (evento.target && evento.target.tagName === 'TD') {
-
-            evento.target.classList.toggle("oculta");
-            
-            if (evento.target.classList.toggle("revelada")==true) {
-                evento.target.style.backgroundImage = "url('"+fotos[evento.target.value]+"')";
-            }else{
-                evento.target.removeAttribute("style");
-            } 
-        }
-    });
-
+    document.querySelector("table").addEventListener("click", manejarEvento);
 }
 
 inicio();
