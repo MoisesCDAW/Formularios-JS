@@ -4,6 +4,7 @@ let direccion = "";
 let gramos = 0;
 let composicion = "";
 let numCuenta = "";
+let contador = "";
 
 
 /**
@@ -34,25 +35,29 @@ function getDatos() {
 
 
 /**
+ * Permite reiniciar el contador
+ */
+function reiniciar() {
+    document.querySelector("#reiniciar").addEventListener("click", ()=>{
+        contador = 0;
+        localStorage.setItem("contador", contador);
+        document.querySelector("#contador").innerHTML = contador;
+    });
+
+}
+
+
+/**
  * Permite al usuario volver al formulario para ingresar nuevos datos
  */
 function volver() {
-    const strDOM = `
-        <form id="producto">
-            <input type="date" id="fecha" value="2024-10-23">
-            <input type="text" id="cocinero" placeholder="Nombre cocinero" value="ww$1234">
-            <input type="text" id="direccion" placeholder="Dirección destino" value="ww_srgsarg:1234">
-            <input type="number" id="gramos" placeholder="Gramos" value="220">
-            <input type="text" id="composicion" placeholder="Composición" value="200gC3OH7">
-            <input type="text" id="cuenta" placeholder="Nº Cuenta" value="US40-123456789012-34">
-            <button>Enviar</button>
-        </form>
-    `;
+    contador = 0;
+    localStorage.setItem("contador", contador);
 
     document.querySelector("#volver").addEventListener("click", ()=>{
-        document.querySelector("#cuerpo").innerHTML = strDOM;
-        inicio();
+        location.reload();
     });
+
 }
 
 
@@ -174,7 +179,6 @@ function validarComposicion() {
  */
 function validarDatos() {
     let valido = 1;
-    let error = [];
 
     if (getDatos()) {
 
@@ -242,6 +246,10 @@ function validarDatos() {
 
     if (valido==1) {
         pintaDatos();
+    }else {
+        contador++;
+        localStorage.setItem("contador", contador);
+        document.querySelector("#contador").innerHTML = contador;
     }
 }
 
@@ -250,11 +258,20 @@ function validarDatos() {
  * Inicio del programa. Controla el evento del formulario
  */
 function inicio(){
+    contador = localStorage.getItem("contador");
+    if (contador==null) {
+        contador = 0;
+        localStorage.setItem("contador", contador);
+    }
+
+
     // Evita que la página se recargue al enviar el formulario
     document.querySelector("#producto").addEventListener("submit", (evento)=> {
         evento.preventDefault();
         validarDatos();
     });
+
+    reiniciar();
 }
 
 inicio();
