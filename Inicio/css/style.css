@@ -1,0 +1,197 @@
+@font-face {
+    font-family: "LuckiestGuy";
+    src: url("../fuentes/Luckiest_Guy/LuckiestGuy-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fuentes/Inter/static/Inter_18pt-Regular.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background: center/cover no-repeat url("../img/fondo.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Inter";
+}
+
+#contenedor {
+    width: 60%;
+    height: 70%;
+    display: flex;
+    border-radius: 25px;
+    box-shadow: 0 0 20px #0000002a;
+}
+
+/* =================== BARRA LATERAL ========================*/
+#contenedor-barra-lateral {
+    width: 40%;
+    height: 100%;
+    background-color: #81CDC1;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+#barra-lateral {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+}
+
+#barra-lateral img {
+    width: 32px;
+    height: 32px;
+}
+
+.interactivo {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+.interactivo a {
+    width: 60%;
+    height: 90%;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 0 15px #0000002b;
+    color: white;
+    font-family: "Inter";
+    font-weight: 800;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.interactivo a:hover {
+    cursor: pointer;
+}
+
+#uno a{
+    background-color: #F26132;
+    transition: 0.3s ease;
+}
+
+#dos a{
+    background-color: #953867;
+    transition: 0.3s ease;
+}
+
+#tres a{
+    background-color: #216E68;
+    transition: 0.3s ease;
+}
+
+#uno a:hover {
+    background-color: white;
+    color: #216E68;
+}
+
+#dos a:hover {
+    background-color: white;
+    color: #216E68;
+}
+
+#tres a:hover {
+    background-color: white;
+    color: #216E68;
+}
+
+
+/* =================== CONTENEDOR TITULOS ========================*/
+#contenedor-titulos {
+    width: 60%;
+    height: 100%;
+    background-color: white;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 4%;
+    gap: 3%;
+}
+
+#titulo {
+    display: flex;
+    align-items: center;
+    gap: 2%;
+}
+
+#titulo h1{
+    font-family: "LuckiestGuy";
+    font-size: 42px;
+    letter-spacing: 2px;
+    color: #216E68;
+}
+
+#contenedor-titulos p {
+    line-height: 35px;
+}
+
+/* =================== MÓVILES EN VERTICAL ========================*/
+
+@media screen and (max-width: 450px) {
+    #contenedor {
+        width: 90%;
+        height: 90%;
+        flex-direction: column;
+        border-radius: 12px;
+    }
+    
+    #contenedor-titulos {
+        width: 100%;
+        border-radius: none;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        gap: 10%;
+    }
+    
+    #titulo {
+        flex-direction: column;
+    }
+    
+    #contenedor-titulos p {
+        text-align: center; 
+        line-height: 25px;
+    }
+    
+    #contenedor-barra-lateral {
+        border-radius: 0;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        width: 100%;
+        height: 100%;
+        order: 2;
+    }
+    
+    .interactivo {
+        height: 15%;
+    }
+    
+    .interactivo img {
+        display: none;
+    }
+    
+    .interactivo a {
+        width: 80%;
+    } 
+}
