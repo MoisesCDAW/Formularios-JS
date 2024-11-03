@@ -7,20 +7,21 @@
     <title>Inicio</title>
 </head>
 <body>
-    <section id="seccion-uno">
+    <section class="cont-test">
         <form id="preguntas">
             <div class="cont-pregunta" id="cont-pregunta-x">
                 <p id="pregunta-x">Pregunta sobre la serie de televisión</p>
-                <input type="radio" name="opcion-x" id="radio-x-0"><span id="res-x-0">Respuesta uno</span>
-                <input type="radio" name="opcion-x" id="radio-x-1"><span id="res-x-1">Respuesta dos</span>
-                <input type="radio" name="opcion-x" id="radio-x-2"><span id="res-x-2">Respuesta tres</span>
-                <div id="resultado-x"></div>
+                <div class="cont-res" id="cont-res-x">
+                    <div class="cont-input"><input type="radio" name="opcion-x" id="radio-x-0"><span id="res-x-0">Respuesta uno</span></div>
+                    <div class="cont-input"><input type="radio" name="opcion-x" id="radio-x-1"><span id="res-x-1">Respuesta dos</span></div>
+                    <div class="cont-input"><input type="radio" name="opcion-x" id="radio-x-2"><span id="res-x-2">Respuesta tres</span></div>
+                </div>
             </div>
             <!-- <button id="enviar">Enviar</button> -->
         </form>
 
         <div class="contenedor-detalles" id="detalles">
-            <p id="num-correctas"></p>
+            <p id="num-correctas">?/10</p>
         </div>
     </section>
     
