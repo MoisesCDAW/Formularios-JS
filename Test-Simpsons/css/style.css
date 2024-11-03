@@ -1,22 +1,138 @@
+@font-face {
+    font-family: "LuckiestGuy";
+    src: url("../fuentes/Luckiest_Guy/LuckiestGuy-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fuentes/Inter/static/Inter_18pt-Regular.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background: center/cover url("../img/fondo.png") no-repeat;
+    font-family: "Inter";
+}
+
+.cont-test {
+    width: 45%;
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 5%;
+    padding-top: 2%;
+    margin-left: 20%;
+}
+
+#preguntas {
+    width: 100%;
+    height: 100vh;
+}
+
+#preguntas button {
+    background-color: #953867;
+    color: white;
+    border: none;
+    font-family: "LuckiestGuy";
+    letter-spacing: 1px;
+    width: 120px;
+    height: 45px;
+    border-radius: 50px;
+    font-size: 20px;
+    margin: 6%;
+    margin-left: 0;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#preguntas button:hover{
+    background-color: #83CCC1;
+}
+
+.cont-pregunta {
+    width: 100%;
+    height: 40%;
+}
+
+.cont-pregunta p {
+    font-size: 26px;
+    font-family: "LuckiestGuy";
+    color: #216E68;
+    letter-spacing: 1px;
+    height: 40%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cont-res {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3%;
+    padding: 1.2%;
+}
+
+.cont-input {
+    height: calc(90%/3);
+    background-color: white;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    padding-left: 5%;
+    font-size: 18px;
+}
+
+.cont-input input[type="radio"] {
+    cursor: pointer;
+    accent-color: #F26132;
+    width: 20px;
+    height: 20px;
+}
+
+.contenedor-detalles {
+    color: #216E68;
+    font-family: "LuckiestGuy";
+    font-size: 42px;
+    position: absolute;
+    top: 5%;
+    right: 10%;
+}
+
+/* ============= UTILIDADES ============== */
 .correcta {
-    width: 25px;
-    height: 25px;
-    background: url("../img/correcta.png");
-    background-size: 100%;
+    background-color: #CFEFEA;
+    border-radius: 20px;
+    border-left: 7px solid #83CCC1;
 }
 
 .incorrecta {
-    width: 25px;
-    height: 25px;
-    background: url("../img/incorrecta.png");
-    background-size: 100%;
-}
-
-.marcada {
-
+    background-color: #FFDEDE;
+    border-radius: 20px;
+    border-left: 7px solid #F26132;
 }
 
 .no-marcada {
-    border: 2px solid red;
-    border-radius: 10px;
+    color: #F16132 !important; 
+}
+
+.cont-test::-webkit-scrollbar {
+    width: 4px;               
+}
+
+.cont-test::-webkit-scrollbar-thumb {
+    background-color: #216E68;   
+    border-radius: 50px;
 }

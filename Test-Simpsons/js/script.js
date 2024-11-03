@@ -64,7 +64,7 @@ function validarRespuestas() {
     });
 
     for (let i = 0; i < preguntas.length; i++) {
-        const posicionRes = document.querySelector("#resultado-"+i);
+        const posicionRes = document.querySelector("#cont-res-"+i);
         const posicionPre = document.querySelector("#cont-pregunta-"+i);
         const marcado = posicionPre.querySelector("input[type=radio]:checked");
         
@@ -78,11 +78,10 @@ function validarRespuestas() {
 
             posicionPre.querySelectorAll("input[type=radio]").forEach((x)=>x.disabled = true);
 
-            posicionPre.classList.remove("no-marcada");
-            marcado.classList.add("marcada");
+            document.querySelector("#pregunta-"+i).classList.remove("no-marcada");
         }else {
             valido = false;
-            posicionPre.classList.add("no-marcada");
+            document.querySelector("#pregunta-"+i).classList.add("no-marcada");
         }
     }
 
@@ -90,7 +89,7 @@ function validarRespuestas() {
         preCorrectas.map((x)=>x.classList.add("correcta"));
         preIncorrectas.map((x)=>x.classList.add("incorrecta"));
         document.querySelector("#enviar").hidden = true;
-        document.querySelector("#num-correctas").innerHTML = `Resultado: ${correctas} / ${cantidadPreguntas}`;
+        document.querySelector("#num-correctas").innerHTML = `${correctas} / ${cantidadPreguntas}`;
     }else{
         alert("No has respondido todas las preguntas");
     }
@@ -126,15 +125,16 @@ function pintaPreguntas() {
         str = `           
             <div class="cont-pregunta" id="cont-pregunta-x">
                 <p id="pregunta-x">Pregunta sobre la serie de televisión</p>
-                <input type="radio" name="opcion-x" id="radio-x-0"><span id="res-x-0">Respuesta uno</span>
-                <input type="radio" name="opcion-x" id="radio-x-1"><span id="res-x-1">Respuesta dos</span>
-                <input type="radio" name="opcion-x" id="radio-x-2"><span id="res-x-2">Respuesta tres</span>
-                <div id="resultado-x"></div>
+                <div class="cont-res" id="cont-res-x">
+                    <div class="cont-input"><input type="radio" name="opcion-x" id="radio-x-0"><span id="res-x-0">Respuesta uno</span></div>
+                    <div class="cont-input"><input type="radio" name="opcion-x" id="radio-x-1"><span id="res-x-1">Respuesta dos</span></div>
+                    <div class="cont-input"><input type="radio" name="opcion-x" id="radio-x-2"><span id="res-x-2">Respuesta tres</span></div>
+                </div>
             </div>`;
         
         document.querySelector("#cont-pregunta-x").id = "cont-pregunta-"+i;
         document.querySelector("#pregunta-x").id = "pregunta-"+i;
-        document.querySelector("#resultado-x").id = "resultado-"+i;
+        document.querySelector("#cont-res-x").id = "cont-res-"+i;
         document.querySelector("#pregunta-"+i).innerHTML = preguntas[i].pregunta;
 
         for (let j = 0; j < 3; j++) {
