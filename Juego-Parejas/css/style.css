@@ -1,3 +1,14 @@
+@font-face {
+    font-family: "LuckiestGuy";
+    src: url("../fuentes/Luckiest_Guy/LuckiestGuy-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fuentes/Inter/static/Inter_18pt-Regular.ttf");
+}
+
+
 *{
     padding: 0;
     margin: 0;
@@ -31,10 +42,39 @@ td {
     border: 5px solid white;
 }
 
+.cont-text {
+    width: 22%;
+    margin-right: 10%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5%;
+}
 
-.resultado {
-    margin-top: 4%;
-    margin-right: 15%;
+.notas {
+
+    font-family: "Inter";
+    color: white;
+    background-color: #953867;
+    border: 3px solid white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.193);
+    height: 14%;
+    border-radius: 15px;
+    text-align: center;
+    padding: 2%;
+    display: flex;
+    align-items: center;
+}
+
+.cont-text span {
+    color: #216E68;
+    font-size: 24px;
+    align-self: center;
+    font-family: "LuckiestGuy";
+}
+
+#resultados {
+    font-size: 42px;
+    margin-bottom: 20%;
 }
 
 
@@ -48,7 +88,7 @@ td {
 .revelada {
     background-image: url('../img/lisa.png');
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 70%;
     background-position: center;
     background-color: white;
     cursor: pointer;
