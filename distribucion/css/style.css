@@ -19,7 +19,7 @@ body {
     height: 100vh;
     background: center/cover no-repeat url("../img/fondo.png");
     display: flex;
-    justify-content: center;
+    align-items: center;
 }
 
 #volver {
@@ -34,14 +34,54 @@ body {
     height: 45px;
 }
 
-.cont-form {
-    border: 2px solid gold;
-    width: 45%;
+
+#contenedor {
+    width: 30%;
+    margin-left: 25%;
     height: 80%;
-    display: flex;
-    flex-direction: column;
 }
 
+/*====================== FORMULARIO ====================*/
+
+.cont-form {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cont-form h1{
+    font-size: 36px;
+    font-family: "LuckiestGuy";
+    letter-spacing: 1px;
+    color: #216E68;
+}
+
+.cont-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+    width: 100%;
+    height: 100%;
+    margin-top: 8%;
+}
+
+.input {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.116);
+    background-color: white;
+    height: 50px;
+    padding: 2%;
+    padding-left: 4%;
+    font-size: 16px;
+    font-family: "inter";
+    color: rgb(107, 107, 107);
+}
+
+
+/*====================== CONTADOR FALLOS EN LOS ENVÍOS ====================*/
 
 #fallos {
     color: #216E68;
@@ -63,8 +103,14 @@ body {
     letter-spacing: 1px;
 }
 
-#fallos button {
-    background-color: #F26132;
+/*====================== CONTADOR FALLOS EN LOS ENVÍOS ====================*/
+#etiqueta{
+
+}
+
+/*====================== BOTONES ====================*/
+
+#fallos button, #volverForm, #enviar{
     color: white;
     border: none;
     font-family: "LuckiestGuy";
@@ -75,9 +121,24 @@ body {
     font-size: 18px;
     cursor: pointer;
     transition: 0.3s ease;
-    margin-top: 10%;
 }
 
-#fallos button:hover{
+#fallos button, #volverForm  {
+    margin-top: 10%;
+    background-color: #F26132;
+}
+
+#fallos button:hover, #enviar:hover, #volverForm:hover{
     background-color: #953867;
+}
+
+#enviar {
+    background-color: #216E68;
+    align-self: center;
+    margin-top: 8%;
+}
+
+#volverForm {
+    width: 200px;
+    height: 40px;
 }

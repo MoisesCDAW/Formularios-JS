@@ -4,7 +4,55 @@ let direccion = "";
 let gramos = 0;
 let composicion = "";
 let numCuenta = "";
-let contador = "";
+let contador = 0;
+
+/**
+ * Permite recuperar una cookie por su nombre
+ * @param {String} nombre de la cookie que se quiere recuperar
+ * @returns Objeto con la clave-valor de la cookie
+ */
+function getCookie(nombre) {
+    let cookie = false;
+
+    document.cookie.split(";").map((x)=>{
+        x = x.trim();
+        nom = decodeURIComponent(x.substring(0, x.indexOf("="))); // decodeURIComponent(). Decodifica la URL y la convierte a su formato original
+        valor = decodeURIComponent(x.substring(x.indexOf("=")+1, x.length));
+    
+        if (nom == nombre) {
+            cookie={[nombre]:valor};
+        }
+    });
+
+    return cookie;
+}
+
+
+/**
+ * Permite crear una cookie
+ * @param {String} nombre que tendrá la cookie
+ * @param {String} valor para la cookie
+ * @param {Object} opciones opcionales que tendrá la cookie
+ */
+function setCookie(nombre, valor, opciones = {}) {
+    let str = `${nombre}=${valor};`;
+    
+    Object.entries(opciones).forEach(([key, value])=>{ // Object.entries(obj): Devuelve un array de pares clave-valor.
+        let aux = `${key}=${value};`;
+        str += aux;
+    });
+
+    document.cookie = str;
+}
+
+
+/**
+ * Permite borrar una cookie
+ * @param {String} nombre de la cookie que se quiere borrar
+ */
+function dropCookie(nombre) {
+    setCookie(nombre, "", {expires: new Date("2020")});
+}
 
 
 /**
@@ -40,10 +88,9 @@ function getDatos() {
 function reiniciar() {
     document.querySelector("#reiniciar").addEventListener("click", ()=>{
         contador = 0;
-        localStorage.setItem("contador", contador);
+        dropCookie("contador");
         document.querySelector("#contador").innerHTML = contador;
     });
-
 }
 
 
@@ -52,9 +99,8 @@ function reiniciar() {
  */
 function volver() {
     contador = 0;
-    localStorage.setItem("contador", contador);
-
-    document.querySelector("#volver").addEventListener("click", ()=>{
+    dropCookie("contador");
+    document.querySelector("#volverForm").addEventListener("click", ()=>{
         location.reload();
     });
 
@@ -69,7 +115,7 @@ function pintaDatos() {
         <div id="etiqueta">
             <p id="producto">Producto NºXX</p>
             <p id="informacion"></p>
-            <button id="volver">Volver al Formulario</button>
+            <button id="volverForm">Volver al Form</button>
         </div>
     `;
 
@@ -248,7 +294,7 @@ function validarDatos() {
         pintaDatos();
     }else {
         contador++;
-        localStorage.setItem("contador", contador);
+        setCookie("contador", contador, {expires: new Date("2026"), samesite: "strict"});
         document.querySelector("#contador").innerHTML = contador;
     }
 }
@@ -258,12 +304,19 @@ function validarDatos() {
  * Inicio del programa. Controla el evento del formulario
  */
 function inicio(){
-    contador = localStorage.getItem("contador");
-    if (contador==null) {
-        contador = 0;
-        localStorage.setItem("contador", contador);
-    }
 
+    // Busca si la cookie existe y la imprime si no, la crea y la inicializa con el valor 0
+    let cookie = getCookie("contador");
+    let posicion = document.querySelector("#contador");
+
+    if (cookie==false) {
+        setCookie("contador", "0", {expires: new Date("2026"), samesite: "strict"});
+        posicion.innerHTML = "0";
+        contador = 0;
+    }else {
+        posicion.innerHTML = cookie["contador"];
+        contador = cookie["contador"];
+    }
 
     // Evita que la página se recargue al enviar el formulario
     document.querySelector("#producto").addEventListener("submit", (evento)=> {

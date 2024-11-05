@@ -52,6 +52,10 @@ const preguntas = [
 ];
 
 
+/**
+ * Busca los input que estén marcados y comprueba si la selección es correcta
+ * Si se envía el form y hay preguntas sin marcar, da el aviso y las resaltas
+ */
 function validarRespuestas() {
     let correctas = 0;
     let valido = true;
@@ -66,9 +70,11 @@ function validarRespuestas() {
     for (let i = 0; i < preguntas.length; i++) {
         const posicionRes = document.querySelector("#cont-res-"+i);
         const posicionPre = document.querySelector("#cont-pregunta-"+i);
-        const marcado = posicionPre.querySelector("input[type=radio]:checked");
+        const marcado = posicionPre.querySelector("input[type=radio]:checked"); // Retorna "null" si no encuentra nada
         
         if (marcado!=null) {
+
+            // Permite llevar un control de las preguntas correctas e incorrectas
             if (marcado.value==preguntas[i].resc) {
                 correctas++;
                 preCorrectas.push(posicionRes);
@@ -76,7 +82,7 @@ function validarRespuestas() {
                 preIncorrectas.push(posicionRes);
             }
 
-            posicionPre.querySelectorAll("input[type=radio]").forEach((x)=>x.disabled = true);
+            posicionPre.querySelectorAll("input[type=radio]").forEach((x)=>x.disabled = true); // Para desactivar el input
 
             document.querySelector("#pregunta-"+i).classList.remove("no-marcada");
         }else {
@@ -85,6 +91,7 @@ function validarRespuestas() {
         }
     }
 
+    // Será true cuándo estén todas las preguntas marcadas
     if (valido) {
         preCorrectas.map((x)=>x.classList.add("correcta"));
         preIncorrectas.map((x)=>x.classList.add("incorrecta"));
@@ -97,6 +104,11 @@ function validarRespuestas() {
 }
     
 
+/**
+ * Genera el orden en que se deben imprimir las respuestas 
+ * @param {Object} objeto 
+ * @returns Array de enteros
+ */
 function cambiaOrdenRespuestas(objeto) {
     let nuevoOrden = [];
     let numeros = [];
@@ -116,6 +128,9 @@ function cambiaOrdenRespuestas(objeto) {
 }
 
 
+/**
+ * Manipula el DOM para agregar los contenedores con sus preguntas y respuestas respectivas
+ */
 function pintaPreguntas() {
     let str = "";
 
