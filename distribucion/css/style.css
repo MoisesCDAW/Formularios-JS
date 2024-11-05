@@ -105,7 +105,21 @@ body {
 
 /*====================== CONTADOR FALLOS EN LOS ENVÍOS ====================*/
 #etiqueta{
+    font-family: "inter";
+    line-height: 35px;
+    font-size: 18px;
+}
 
+#producto {
+    font-family: "LuckiestGuy";
+    font-size: 38px;
+    letter-spacing: 1px;
+    color: #216E68;
+    margin-bottom: 5%;
+}
+
+#etiqueta span {
+    font-weight: 800;
 }
 
 /*====================== BOTONES ====================*/

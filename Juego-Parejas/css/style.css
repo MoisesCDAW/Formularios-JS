@@ -73,6 +73,7 @@ td {
     padding: 2%;
     display: flex;
     align-items: center;
+    font-size: 18px;
 }
 
 .cont-text span {

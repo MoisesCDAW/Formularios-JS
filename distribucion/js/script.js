@@ -120,13 +120,13 @@ function pintaDatos() {
     `;
 
     let datos = `
-        Fecha Elaboración: ${fechaElaboracion}<br>
-        Cocinero: ${cocinero}<br>
-        Destino: ${direccion}<br>
-        Gramos: ${gramos}<br>
-        Composición: ${composicion}<br>
-        Nº Cuenta: ${numCuenta}<br>
-        Formato alternativo: ${numCuenta.replaceAll("-", "")}
+        <span>Fecha Elaboración:</span> ${fechaElaboracion}<br>
+        <span>Cocinero:</span> ${cocinero}<br>
+        <span>Destino:</span> ${direccion}<br>
+        <span>Gramos:</span> ${gramos}<br>
+        <span>Composición:</span> ${composicion}<br>
+        <span>Nº Cuenta:</span> ${numCuenta}<br>
+        <span>Formato alternativo:</span> ${numCuenta.replaceAll("-", "")}
     `;
 
     document.querySelector("#contenedor").innerHTML = strDOM;
