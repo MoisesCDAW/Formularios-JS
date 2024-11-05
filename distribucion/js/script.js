@@ -69,7 +69,7 @@ function pintaDatos() {
         <div id="etiqueta">
             <p id="producto">Producto NºXX</p>
             <p id="informacion"></p>
-            <button id="volver">Volver</button>
+            <button id="volver">Volver al Formulario</button>
         </div>
     `;
 

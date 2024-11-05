@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "LuckiestGuy";
+    src: url("../fuentes/Luckiest_Guy/LuckiestGuy-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fuentes/Inter/static/Inter_18pt-Regular.ttf");
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -8,5 +18,66 @@ body {
     width: 100%;
     height: 100vh;
     background: center/cover no-repeat url("../img/fondo.png");
+    display: flex;
+    justify-content: center;
 }
 
+#volver {
+    width: 10%;
+    position: absolute;
+    top: 5%;
+    left: 8%;
+}
+
+#volver img{
+    width: 45px;
+    height: 45px;
+}
+
+.cont-form {
+    border: 2px solid gold;
+    width: 45%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#fallos {
+    color: #216E68;
+    font-family: "LuckiestGuy";
+    font-size: 42px;
+    text-align: center;
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3%;
+}
+
+#fallos h1 {
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+#fallos button {
+    background-color: #F26132;
+    color: white;
+    border: none;
+    font-family: "LuckiestGuy";
+    letter-spacing: 1px;
+    width: 120px;
+    height: 45px;
+    border-radius: 50px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 10%;
+}
+
+#fallos button:hover{
+    background-color: #953867;
+}
