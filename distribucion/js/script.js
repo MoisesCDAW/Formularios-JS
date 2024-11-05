@@ -83,7 +83,7 @@ function pintaDatos() {
         Formato alternativo: ${numCuenta.replaceAll("-", "")}
     `;
 
-    document.querySelector("#cuerpo").innerHTML = strDOM;
+    document.querySelector("#contenedor").innerHTML = strDOM;
     document.querySelector("#informacion").innerHTML = datos;
 
     volver();

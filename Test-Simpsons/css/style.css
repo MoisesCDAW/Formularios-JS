@@ -21,6 +21,18 @@ body {
     font-family: "Inter";
 }
 
+#volver {
+    width: 10%;
+    position: absolute;
+    top: 5%;
+    left: 8%;
+}
+
+#volver img{
+    width: 45px;
+    height: 45px;
+}
+
 .cont-test {
     width: 45%;
     height: 100vh;
