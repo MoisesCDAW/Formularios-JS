@@ -206,7 +206,7 @@ function validarComposicion() {
     expresion = /^[0-9]{1,4}[g][A-Z]{1,2}([0-9])?[A-Z]{1,2}([0-9])?$/;
 
     if (!expresion.test(composicion)) {
-        alert("ERROR. Formato válido: gramos seguido de dos conjuntos de una o dos letras seguidas o no de un número");
+        alert("ERROR. El formato debe ser: gramos seguido de dos conjuntos de una o dos letras seguidas o no de un número");
         valido = 0;
     }
 
@@ -248,7 +248,7 @@ function validarDatos() {
             let expresion = /^[A-Z][A-Z][$%&@#][0-9]{4}$/;
             cocinero = cocinero.toUpperCase();
             if (!expresion.test(cocinero)) {
-                alert("ERROR. Formato válido:  Dos letras, un símbolo ($%&@#) y cuatro dígitos");
+                alert("ERROR. El formato debe ser:  Dos letras, un símbolo ($%&@#) y cuatro dígitos");
                 valido = 0;
 
                 
@@ -262,7 +262,7 @@ function validarDatos() {
                 
                 expresion = /^[A-Z]{2,3}[_][a-z]+[:][0-9]{4}$/;
                 if (!expresion.test(direccion)) {
-                    alert("ERROR. Formato válido: Dos o tres letras, un guión bajo, nombre de la ciudad, dos puntos y 4 digitos");
+                    alert("ERROR. El formato debe ser: Dos o tres letras, un guión bajo, nombre de la ciudad, dos puntos y 4 digitos");
                     valido = 0;
                 }else {
 

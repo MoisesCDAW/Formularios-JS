@@ -88,6 +88,9 @@ td {
     margin-bottom: 20%;
 }
 
+.cont-notas {
+    height: 100%;
+}
 
 /*================ UTILIDADES =================*/
 
@@ -107,4 +110,89 @@ td {
 
 .emparejada {
     background: #83CCC1;
+}
+
+/* =================== MÓVILES EN VERTICAL ========================*/
+@media screen and (max-width: 430px) {
+
+    body {
+        flex-direction: column;
+    }
+
+    .cont-tabla {
+        width: 100%;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .cont-tabla table{
+        width: 95%;
+        height: 450px;
+        margin-bottom: 5%;
+    }
+
+    .cont-text {
+        width: 100%;
+    }
+
+    #resultados {
+        margin: 0;
+    }
+
+    .cont-notas {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 5%;
+    }
+
+    .notas{
+        width: 90%;
+        height: 30%;
+        padding: 4%;
+        font-size: 16px;
+    }
+
+    .revelada {
+        background-size: 100%;
+    }
+}
+
+
+/* =================== MÓVILES EN HORIZONTAL ========================*/
+@media screen and (max-height: 430px) {
+    
+    #volver {
+        margin-left: 2%;
+    }
+    
+    .cont-tabla {
+        margin: 2%;
+    }
+
+    .cont-text {
+        margin: 0;
+        width: 35%;
+        display: flex;
+    }
+
+    .cont-text span {
+        font-size: 24px;
+    }
+
+    #resultados {
+        margin-bottom: 4%;
+    }
+    
+    .cont-notas {
+        width: 100%;
+    }
+
+    .notas {
+        font-size: 14px;
+        padding: 7%;
+        height: 70px;
+    }
 }
