@@ -149,7 +149,7 @@ body {
 
 /* =================== MÓVILES EN VERTICAL ========================*/
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 430px) {
     #contenedor {
         width: 90%;
         height: 90%;
@@ -194,4 +194,24 @@ body {
     .interactivo a {
         width: 80%;
     } 
+}
+
+/* =================== MÓVILES EN HORIZONTAL ========================*/
+@media screen and (max-height: 430px) {
+    #contenedor {
+        width: 90%;
+        height: 85%;
+    }
+
+    #titulo h1{
+        font-size: 30px;
+    }
+
+    #titulo h4{
+        font-size: 14px;
+    }
+
+    #contenedor-titulos p {
+        font-size: 14px;
+    }
 }
