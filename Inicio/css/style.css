@@ -214,4 +214,9 @@ body {
     #contenedor-titulos p {
         font-size: 14px;
     }
+
+    .interactivo a {
+        height: 45px;
+        font-size: 13px;
+    }
 }
