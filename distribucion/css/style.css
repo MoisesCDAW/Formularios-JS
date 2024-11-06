@@ -80,6 +80,24 @@ body {
     color: rgb(107, 107, 107);
 }
 
+#etiqueta{
+    font-family: "inter";
+    line-height: 35px;
+    font-size: 18px;
+}
+
+#producto, #num-producto {
+    font-family: "LuckiestGuy";
+    font-size: 38px;
+    letter-spacing: 1px;
+    color: #216E68;
+    margin-bottom: 5%;
+}
+
+#etiqueta span {
+    font-weight: 800;
+}
+
 
 /*====================== CONTADOR FALLOS EN LOS ENVÍOS ====================*/
 
@@ -103,24 +121,6 @@ body {
     letter-spacing: 1px;
 }
 
-/*====================== CONTADOR FALLOS EN LOS ENVÍOS ====================*/
-#etiqueta{
-    font-family: "inter";
-    line-height: 35px;
-    font-size: 18px;
-}
-
-#producto {
-    font-family: "LuckiestGuy";
-    font-size: 38px;
-    letter-spacing: 1px;
-    color: #216E68;
-    margin-bottom: 5%;
-}
-
-#etiqueta span {
-    font-weight: 800;
-}
 
 /*====================== BOTONES ====================*/
 
@@ -155,4 +155,115 @@ body {
 #volverForm {
     width: 200px;
     height: 40px;
+}
+
+/* =================== MÓVILES EN VERTICAL ========================*/
+@media screen and (max-width: 430px) {
+
+    #volver {
+        margin-left: 0;
+    }
+
+    #contenedor {
+        margin: 0;
+        width: 100%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    #producto {
+        margin-bottom: 0;
+    }
+
+    .input {
+        margin: .5%;
+    }
+
+    .cont-form h1 {
+        margin-top: 35%;
+        font-size: 22px;
+    }
+
+    #fallos h1{
+        font-size: 18px;
+    }
+
+    #fallos p{
+        font-size: 38px;
+    }
+
+    #fallos button,#producto button, #volverForm {
+        width: 100px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    #volverForm {
+        width: 150px;
+    }
+
+    #num-producto{
+        font-size: 28px;
+    }
+
+    #informacion {
+        font-size: 16px;
+    }
+}
+
+
+/* =================== MÓVILES EN HORIZONTAL ========================*/
+@media screen and (max-height: 430px) {
+
+    #contenedor {
+        width: 40%;
+        height: 90%;
+        margin-left: 20%;
+        margin-top: 5%;
+    }
+
+    .cont-form h1 {
+        display: none;
+    }
+
+    #producto {
+        margin: 0;
+    }
+
+    #fallos h1{
+        font-size: 18px;
+    }
+
+    #fallos p{
+        font-size: 38px;
+    }
+
+    #fallos button,#producto button, #volverForm {
+        width: 100px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    #producto button {
+        margin-top: 0;
+    }
+
+    #etiqueta {
+        width: 500px;
+    }
+
+    #volverForm {
+        width: 150px;
+        margin-top: 1%;
+    }
+
+    #num-producto{
+        font-size: 28px;
+        margin-bottom: 1%;
+    }
+
+    #informacion {
+        font-size: 16px;
+    }
+
 }

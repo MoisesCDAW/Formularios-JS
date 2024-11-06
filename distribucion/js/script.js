@@ -113,7 +113,7 @@ function volver() {
 function pintaDatos() {
     const strDOM = `
         <div id="etiqueta">
-            <p id="producto">Producto NºXX</p>
+            <p id="num-producto">Producto NºXX</p>
             <p id="informacion"></p>
             <button id="volverForm">Volver al Form</button>
         </div>
