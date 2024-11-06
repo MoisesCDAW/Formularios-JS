@@ -151,7 +151,73 @@ body {
 
 
 /* =================== MÓVILES EN VERTICAL ========================*/
+@media screen and (max-width: 430px){
+    .cont-test {
+        margin: 0;
+        margin-top: 25%;
+        width: 100%;
+    }
+    
+    .cont-pregunta {
+        height: 30%;
+    }
 
+    .cont-pregunta p {
+        height: 20%;
+        font-size: 20px;
+        margin-bottom: 6%;
+    }
+
+    .cont-input {
+        height: calc(100%/3);
+        font-size: 16px;
+    }
+
+    .contenedor-detalles {
+        font-size: 36px;
+    }
+}
 
 
 /* =================== MÓVILES EN HORIZONTAL ========================*/
+@media screen and (max-height: 430px){
+    .cont-test {
+        margin-left: 12%;
+        width: 60%;
+    }
+    
+    .cont-pregunta {
+        height: 55%;
+        margin-bottom: 2%;
+    }
+
+    .cont-pregunta p {
+        height: 20%;
+        font-size: 22px;
+        margin-bottom: 2%;
+    }
+
+    .cont-res {
+        height: 70%;
+    }
+
+    .cont-res input[type="radio"] {
+        width: 13px;
+        height: 13px;
+    }
+
+    .cont-input {
+        height: calc(100%/3);
+        font-size: 16px;
+    }
+
+    .contenedor-detalles {
+        font-size: 36px;
+    }
+
+    #preguntas button {
+        width: 100px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
